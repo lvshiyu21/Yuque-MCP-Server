@@ -1,0 +1,41 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - yuqueApiToken
+    properties:
+      yuqueApiToken:
+        type: string
+        description: Your Yuque API token for authenticating with the Yuque API.
+      port:
+        type: number
+        default: 3000
+        description: Port on which the server will listen.
+      mode:
+        type: string
+        default: cli
+        description: Mode in which to run the server. Use 'cli' to enable stdio JSON output.
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => {
+      // Use CLI mode which outputs JSON-RPC messages on stdio
+      let modeArg = (config.mode && config.mode === 'cli') ? '--stdio' : '';
+      let args = modeArg ? ['dist/index.js', modeArg] : ['dist/index.js'];
+      return {
+        command: 'node',
+        args: args,
+        env: {
+          PORT: config.port ? config.port.toString() : '3000',
+          YUQUE_API_TOKEN: config.yuqueApiToken
+        }
+      };
+    }
+  exampleConfig:
+    yuqueApiToken: dummy_token_123
+    port: 3000
+    mode: cli

@@ -1,5 +1,6 @@
 # 语雀 MCP 服务器
 
+[![smithery badge](https://smithery.ai/badge/@lvshiyu21/yuque-mcp-server)](https://smithery.ai/server/@lvshiyu21/yuque-mcp-server)
 [English Version](./README.en.md)
 
 一个用于与语雀 API 集成的 Model-Context-Protocol (MCP) 服务器。此实现受 [Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP) 的启发，并使用 [语雀开放 API](https://app.swaggerhub.com/apis-docs/Jeff-Tian/yuque-open_api/2.0.1)。
@@ -20,6 +21,14 @@
 
 - Node.js 18+ (推荐)
 - 拥有 API 令牌的语雀账号
+
+### 安装使用 Smithery
+
+要通过 [Smithery](https://smithery.ai/server/@lvshiyu21/yuque-mcp-server) 安装 `yuque-mcp-server`，请使用以下命令：
+
+```bash
+npx -y @smithery/cli install @lvshiyu21/yuque-mcp-server --client claude
+```
 
 ### 设置
 
